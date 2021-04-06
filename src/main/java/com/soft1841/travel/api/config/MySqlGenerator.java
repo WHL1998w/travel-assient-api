@@ -26,7 +26,7 @@ public class MySqlGenerator {
         String projectPath = System.getProperty("user.dir");
         config.setActiveRecord(true)
                 //作者注释
-                .setAuthor("mq_xu")
+                .setAuthor("wanghuanle")
                 //代码生成输出路径
                 .setOutputDir(projectPath + "/src/main/java")
                 //覆盖已有文件，默认false
@@ -66,20 +66,20 @@ public class MySqlGenerator {
         //包名配置
         PackageConfig packageConfig = new PackageConfig();
         //父包名
-        packageConfig.setParent("com.soft1851.music.admin")
+        packageConfig.setParent("com.soft1841.travel.api")
                 .setMapper("mapper")
                 .setService("service")
                 .setController("controller")
-                .setXml("xml")
+                .setXml("mapper")
                 .setEntity("entity");
 
         //数据源配置
         DataSourceConfig dataSourceConfig = new DataSourceConfig();
         dataSourceConfig.setDbType(DbType.MYSQL)
                 .setDriverName("com.mysql.jdbc.Driver")
-                .setUrl("jdbc:mysql://localhost:3306/cloud_music?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai")
-                .setUsername("root")
-                .setPassword("root");
+                .setUrl("jdbc:mysql://rm-uf6m7500g66x1ms64eo.mysql.rds.aliyuncs.com:3306/db-travel-assistant?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai")
+                .setUsername("wanghuanle")
+                .setPassword("wanghuanle");
 
         AutoGenerator autoGenerator = new AutoGenerator();
         autoGenerator.setGlobalConfig(config)

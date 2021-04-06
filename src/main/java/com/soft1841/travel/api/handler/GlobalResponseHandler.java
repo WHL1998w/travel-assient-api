@@ -10,8 +10,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 /**
  * @author wanghuanle
- * @description 全局统一响应处理
- * @create 2021/03/08
+ * @description 全局统一响应处理:对所有的返回数据统一包装成JSON格式
+ * @create 2020/2/5
  */
 
 @ControllerAdvice

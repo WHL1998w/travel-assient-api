@@ -1,7 +1,6 @@
 package com.soft1841.travel.api.handler;
 
 import com.auth0.jwt.exceptions.InvalidClaimException;
-
 import com.soft1841.travel.api.common.ResponseResult;
 import com.soft1841.travel.api.common.ResultCode;
 import com.soft1841.travel.api.exception.CustomException;
@@ -19,7 +18,7 @@ import java.io.IOException;
  * @ClassName GlobalExceptionHandler
  * @Description 全局统一异常处理
  * @Author wanghuanle
- * @Date 2021/03/08
+ * @Date 2020/4/15
  * @Version 1.0
  */
 @RestControllerAdvice(annotations = {RestController.class, Controller.class})

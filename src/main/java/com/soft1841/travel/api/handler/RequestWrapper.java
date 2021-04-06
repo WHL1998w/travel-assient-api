@@ -9,8 +9,8 @@ import java.io.*;
 /**
  * @ClassName RequestWrapper
  * @Description Request请求参数获取处理类
- * @Author wanghuanle
- * @Date 2021/03/08
+ * @Author mq_xu
+ * @Date 2020/4/21
  * @Version 1.0
  */
 

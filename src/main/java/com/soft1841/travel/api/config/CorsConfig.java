@@ -13,8 +13,8 @@ import java.util.List;
 /**
  * @ClassName CorsConfig
  * @Description 跨域配置
- * @Author wanghuanle
- * @Date 2021/03/08
+ * @Author mq_xu
+ * @Date 2020/4/15
  * @Version 1.0
  */
 @Configuration

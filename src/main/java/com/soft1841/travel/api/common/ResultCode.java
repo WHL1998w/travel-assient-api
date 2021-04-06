@@ -1,9 +1,9 @@
 package com.soft1841.travel.api.common;
 
 /**
- * @author wanghuanle
+ * @author mq_xu
  * @description 各类返回的状态码
- * @create 2021/03/08
+ * @create 2020/2/5
  */
 public enum ResultCode {
     /* 成功状态码 */

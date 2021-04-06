@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soft1841.travel.api.mapper.SysAdminMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="adminMap" type="com.soft1841.travel.api.domain.entity.SysAdmin">
+        <id column="id" property="id" />
+        <result column="account" property="account" />
+        <result column="password" property="password" />
+        <result column="avatar" property="avatar" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <collection property="roles" ofType="com.soft1841.travel.api.domain.entity.SysRole">
+            <result property="roleId" column="role_id" javaType="java.lang.Integer"/>
+            <result property="roleName" column="role_name" javaType="java.lang.String"/>
+        </collection>
+    </resultMap>
+
+    <!--三表联查，查出admin的基础信息以及所对应的角色-->
+    <select id="selectByName" resultMap="adminMap">
+        SELECT t1.id, t1.account, t1.avatar, t1.update_time,t3.role_id, t3.role_name
+        FROM sys_admin t1,
+             role_admin t2,
+             sys_role t3
+        WHERE t1.id = t2.admin_id
+          AND t2.role_id = t3.role_id
+          AND t1.account = #{account}
+    </select>
+
+</mapper>
