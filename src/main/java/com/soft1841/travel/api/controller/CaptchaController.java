@@ -2,7 +2,11 @@ package com.soft1841.travel.api.controller;
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.soft1841.travel.api.service.RedisService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -23,6 +27,8 @@ import java.io.IOException;
  */
 @RestController
 @Slf4j
+@Api(tags = "获取验证码接口", value = "用户相关的Rest API")
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class CaptchaController {
     @Resource
     private DefaultKaptcha defaultKaptcha;
@@ -30,6 +36,7 @@ public class CaptchaController {
     private RedisService redisService;
 
     @GetMapping("/captcha")
+    @ApiOperation(value = "获取验证码", notes = "获取验证码")
     public void defaultCaptcha(String name) {
         //取得HttpServletResponse对象
         ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();

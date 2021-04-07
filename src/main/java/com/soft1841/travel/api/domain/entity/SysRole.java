@@ -6,7 +6,9 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.Accessors;
 
@@ -34,6 +36,13 @@ public class SysRole extends Model<SysRole> {
 
     @TableField("role_name")
     private String roleName;
+
+    /**
+     * SysRole中增加一个SysRole的List
+     */
+    @JsonIgnore
+    @TableField(exist = false) //数据库不存在的字段
+    private List<SysMenu> menus;
 
 
     @Override

@@ -26,38 +26,47 @@ public class SysMenu extends Model<SysMenu> {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * 主键
+     */
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     /**
-     * 菜单名称
+     * 父级资源id，目录的parent_id为0
      */
-    @TableField("menu_name")
-    private String menuName;
+    @TableField("parent_id")
+    private Integer parentId;
 
     /**
-     * 菜单级别
+     * 资源类型：1 目录  2 菜单  3 按钮
      */
-    @TableField("menu_grade")
-    private Integer menuGrade;
+    @TableField("type")
+    private Integer type;
 
     /**
-     * 父级
+     * 资源名称
      */
-    @TableField("parent")
-    private Integer parent;
+    @TableField("title")
+    private String title;
 
     /**
-     * 菜单图标
+     * 资源url
      */
-    @TableField("menu_icon")
-    private String menuIcon;
+    @TableField("path")
+    private String path;
 
     /**
-     * 菜单路径地址
+     * 资源图标
      */
-    @TableField("router")
-    private String router;
+    @TableField("icon")
+    private String icon;
+
+    /**
+     * 排序号
+     */
+    @TableField("sort")
+    private Integer sort;
 
 
     @Override

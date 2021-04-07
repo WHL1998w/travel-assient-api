@@ -1,7 +1,6 @@
 package com.soft1841.travel.api.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.soft1841.travel.api.common.ResponseResult;
 import com.soft1841.travel.api.common.ResultCode;
 import com.soft1841.travel.api.domain.dto.LoginDto;
 import com.soft1841.travel.api.domain.entity.SysAdmin;
@@ -91,9 +90,19 @@ public class SysAdminServiceImpl extends ServiceImpl<SysAdminMapper, SysAdmin> i
         return JwtTokenUtil.getToken(adminId, roles, secrect, expiresAt);
     }
 
+    /**
+     * 修改密码
+     * @param sysAdmin
+     * @return
+     */
     @Override
-    public ResponseResult updateSysAdmin(SysAdmin sysAdmin) {
-        return null;
+    public SysAdmin updateSysAdmin(SysAdmin sysAdmin) {
+        SysAdmin sysAdmin1=sysAdminMapper.getSysAdminById(sysAdmin.getId());
+        sysAdmin1.setPassword(Md5Util.getMd5(sysAdmin.getPassword(),true,32));
+        sysAdmin1.setAccount(sysAdmin.getAccount());
+        sysAdmin1.setAvatar(sysAdmin.getAvatar());
+        sysAdminMapper.updateById(sysAdmin1);
+        return sysAdmin1;
     }
 
     //根据id查找用户信息
