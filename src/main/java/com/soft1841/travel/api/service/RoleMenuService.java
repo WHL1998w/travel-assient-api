@@ -13,4 +13,18 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface RoleMenuService extends IService<RoleMenu> {
 
+
+    /**
+     * 新增角色拥有的菜单
+     * @param roleMenu
+     * @return
+     */
+    RoleMenu insertRoleMenu(RoleMenu roleMenu);
+
+    /**
+     * 根据id删除角色菜单
+     * @param roleMenu
+     * @return
+     */
+    RoleMenu deleteRoleMenu(RoleMenu roleMenu);
 }
