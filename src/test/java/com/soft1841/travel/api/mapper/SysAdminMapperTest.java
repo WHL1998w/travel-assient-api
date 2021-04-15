@@ -35,4 +35,9 @@ class SysAdminMapperTest {
     @Test
     void getSysAdminById() {
     }
+
+    @Test
+    void insertAdmin() {
+
+    }
 }

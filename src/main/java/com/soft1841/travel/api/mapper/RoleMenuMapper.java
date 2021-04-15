@@ -25,6 +25,10 @@ public interface RoleMenuMapper extends BaseMapper<RoleMenu> {
     @Insert("INSERT INTO role_menu(role_id,menu_id) values (#{roleId},#{menuId})")
     void insertRoleMenu(@Param("roleId")Integer roleId,@Param("menuId") Integer menuId);
 
+    /**
+     * 删除角色拥有的菜单
+     * @param id
+     */
     @Delete("DELETE FROM role_menu WHERE id = #{id}")
     void deleteRoleMenu(@Param("id")Integer id);
 }

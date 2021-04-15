@@ -2,8 +2,12 @@ package com.soft1841.travel.api.mapper;
 
 import com.soft1841.travel.api.domain.entity.SysAdmin;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -39,4 +43,22 @@ public interface SysAdminMapper extends BaseMapper<SysAdmin> {
      */
     @Select("SELECT * FROM sys_admin WHERE id = #{id}")
     SysAdmin getSysAdminById(@Param("id") String id);
+
+    /**
+     * 新增管理员admin
+     * @param account
+     * @param password
+     * @param salt
+     */
+    @Insert("INSERT INTO sys_admin(id,account,password,avatar,salt) values (#{id},#{account},#{password},#{avatar},#{salt})")
+    void insertAdmin(@Param("id") String id, @Param("account") String account,
+                     @Param("password") String password,@Param("avatar")String avatar,
+                     @Param("salt") String salt);
+
+    /**
+     * 删除管理员
+     * @param id
+     */
+    @Delete("DELETE FROM sys_admin WHERE id = #{id}")
+    void deleteAdmin(@Param("id") String id);
 }

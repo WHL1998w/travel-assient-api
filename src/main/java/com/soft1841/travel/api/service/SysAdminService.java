@@ -1,5 +1,6 @@
 package com.soft1841.travel.api.service;
 
+import com.soft1841.travel.api.domain.dto.AdminDto;
 import com.soft1841.travel.api.domain.dto.LoginDto;
 import com.soft1841.travel.api.domain.entity.SysAdmin;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -55,4 +56,18 @@ public interface SysAdminService extends IService<SysAdmin> {
      * @return SysAdminDto
      */
     SysAdmin getSysAdminById(String id);
+
+    /**
+     * 新增管理员admin
+     * @param adminDto
+     * @return
+     */
+    AdminDto insertAdmin(AdminDto adminDto);
+
+    /**
+     * 删除管理员
+     * @param adminDto
+     * @return
+     */
+    AdminDto deleteAdmin(AdminDto adminDto);
 }

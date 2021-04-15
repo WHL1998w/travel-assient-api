@@ -19,4 +19,8 @@ class SysAdminServiceTest {
         LoginDto loginDto = LoginDto.builder().name("wanghuanle").password("123456").build();
         System.out.println(sysAdminService.login(loginDto));
     }
+
+    @Test
+    void insertAdmin() {
+    }
 }

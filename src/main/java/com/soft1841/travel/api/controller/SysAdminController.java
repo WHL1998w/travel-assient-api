@@ -1,7 +1,9 @@
 package com.soft1841.travel.api.controller;
 
 
+import com.soft1841.travel.api.domain.dto.AdminDto;
 import com.soft1841.travel.api.domain.dto.LoginDto;
+import com.soft1841.travel.api.domain.entity.RoleMenu;
 import com.soft1841.travel.api.domain.entity.SysAdmin;
 import com.soft1841.travel.api.service.SysAdminService;
 import io.swagger.annotations.Api;
@@ -59,5 +61,19 @@ public class SysAdminController {
     @ApiOperation(value = "修改管理员信息", notes = "修改管理员信息")
     SysAdmin updateSysAdmin(@RequestBody SysAdmin sysAdmin){
         return sysAdminService.updateSysAdmin(sysAdmin);
+    }
+
+    @PostMapping("/insert")
+    @ApiOperation(value = "新增管理员", notes = "新增管理员")
+    public AdminDto insertAdmin(@RequestBody AdminDto adminDto){
+        log.info((adminDto.toString()));
+        return this.sysAdminService.insertAdmin(adminDto);
+    }
+
+    @PostMapping("/delete")
+    @ApiOperation(value = "删除管理员", notes = "删除管理员")
+    public AdminDto deleteAdmin(@RequestBody AdminDto AdminDto){
+        log.info((AdminDto.toString()));
+        return this.sysAdminService.deleteAdmin(AdminDto);
     }
 }

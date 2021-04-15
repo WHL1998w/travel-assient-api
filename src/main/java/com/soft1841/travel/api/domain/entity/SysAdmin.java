@@ -55,18 +55,6 @@ public class SysAdmin extends Model<SysAdmin> {
     private String avatar;
 
     /**
-     * 创建时间
-     */
-    @TableField("create_time")
-    private LocalDateTime createTime;
-
-    /**
-     * 更新时间
-     */
-    @TableField("update_time")
-    private LocalDateTime updateTime;
-
-    /**
      * 加密盐
      */
     @JsonIgnore

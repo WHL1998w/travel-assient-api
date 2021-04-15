@@ -2,6 +2,7 @@ package com.soft1841.travel.api.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.soft1841.travel.api.common.ResultCode;
+import com.soft1841.travel.api.domain.dto.AdminDto;
 import com.soft1841.travel.api.domain.dto.LoginDto;
 import com.soft1841.travel.api.domain.entity.SysAdmin;
 import com.soft1841.travel.api.domain.entity.SysRole;
@@ -16,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -109,5 +111,21 @@ public class SysAdminServiceImpl extends ServiceImpl<SysAdminMapper, SysAdmin> i
     @Override
     public SysAdmin getSysAdminById(String id) {
         return sysAdminMapper.getSysAdminById(id);
+    }
+
+    /**
+     * 新增管理员admin
+     */
+    @Override
+    public AdminDto insertAdmin(AdminDto adminDto) {
+        sysAdminMapper.insertAdmin(adminDto.getId(),adminDto.getAccount(),Md5Util.getMd5(adminDto.getPassword(),true,32),adminDto.getAvatar(),
+                adminDto.getSalt());
+        return adminDto;
+    }
+
+    @Override
+    public AdminDto deleteAdmin(AdminDto adminDto) {
+        sysAdminMapper.deleteAdmin(adminDto.getId());
+        return adminDto;
     }
 }
