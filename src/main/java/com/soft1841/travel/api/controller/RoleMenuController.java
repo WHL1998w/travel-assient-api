@@ -24,7 +24,7 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("/roleMenu")
-@Api(tags = "用户菜单接口", value = "用户相关的Rest API")
+@Api(tags = "角色菜单接口", value = "用户相关的Rest API")
 @Slf4j
 public class RoleMenuController {
     @Resource

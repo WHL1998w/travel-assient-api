@@ -35,6 +35,12 @@ spring:
       connection-test-query: SELECT 1
 
   redis:
+    key:
+      prefix:
+        authCode: "portal:authCode:"
+        orderId: "portal:orderId:"
+      expire:
+        authCode: 60 # 验证码超期时间
     database: 0
     password:
     port: 6379

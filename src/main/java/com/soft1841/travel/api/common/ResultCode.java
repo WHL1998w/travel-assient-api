@@ -1,5 +1,8 @@
 package com.soft1841.travel.api.common;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author mq_xu
  * @description 各类返回的状态码
@@ -36,7 +39,9 @@ public enum ResultCode {
     USER_NO_AUTH(20019, "用户权限不足"),
     USER_TOKEN_EXPIRES(200010, "Token已过期"),
     USER_AUTH_ERROR(200011, "用户认证失败"),
-
+    USER_HAS_EXISTED(20007, "用户已存在"),
+    USER_NOT_EXIST(20006, "用户不存在"),
+    USER_VERIFY_OVERDUE(2009,"验证码已过期"),
 
     /* 业务错误：30001-39999 */
     SMS_ERROR(30001, "短信业务出现问题"),
@@ -100,9 +105,26 @@ public enum ResultCode {
         return null;
     }
 
+
     @Override
     public String toString() {
         return this.name();
     }
 
+    /**
+     * 校验重复的code值
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        ResultCode[] ApiResultCodes = ResultCode.values();
+        List<Integer> codeList = new ArrayList<Integer>();
+        for (ResultCode ApiResultCode : ApiResultCodes) {
+            if (codeList.contains(ApiResultCode.code)) {
+                System.out.println(ApiResultCode.code);
+            } else {
+                codeList.add(ApiResultCode.code());
+            }
+        }
     }
+}

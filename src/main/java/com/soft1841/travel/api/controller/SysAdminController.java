@@ -29,7 +29,7 @@ import java.util.Map;
 @RequestMapping(value = "/sysAdmin")
 @Slf4j
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-@Api(tags = "用户管理接口", value = "用户相关的Rest API")
+@Api(tags = "管理员接口", value = "管理员相关的Rest API")
 public class SysAdminController {
 
     @Resource
