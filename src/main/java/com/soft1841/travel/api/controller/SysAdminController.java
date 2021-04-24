@@ -52,6 +52,7 @@ public class SysAdminController {
      */
     @GetMapping("/{id}")
     @ApiOperation(value = "根据管理员id查询信息", notes = "根据管理员id查询信息")
+    //@PathVariable路径传参的注解
     public SysAdmin getSysAdmin(@PathVariable String id) {
         log.info(sysAdminService.getSysAdminById(id).toString());
         return sysAdminService.getSysAdminById(id);
