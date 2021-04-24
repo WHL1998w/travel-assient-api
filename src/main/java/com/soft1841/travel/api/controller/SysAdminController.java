@@ -41,7 +41,7 @@ public class SysAdminController {
      * @return String
      */
     @PostMapping("/login")
-    @ApiOperation(value = "账号密码验证码登录", notes = "账号密码验证码登录")
+    @ApiOperation(value = "账号密码登录", notes = "账号密码登录")
     public Map login(@RequestBody @Valid LoginDto loginDto) {
         log.info(loginDto.toString());
         return sysAdminService.login(loginDto);

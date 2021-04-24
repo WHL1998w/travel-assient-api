@@ -26,7 +26,4 @@ public class LoginDto {
     @Size(min = 6,max = 16,message = "密码不能小于6位大于16位")
     @NotNull(message = "密码不能为空")
     private String password;
-    @Size(min = 4,max = 6,message = "验证码输入有误")
-    @NotNull(message = "验证码不能为空")
-    private String verifyCode;
 }
