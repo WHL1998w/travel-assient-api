@@ -53,6 +53,6 @@ public class UserController {
     @PostMapping(value = "/login")
     @ApiOperation(value = "根据短信验证登录", notes = "根据短信验证登录")
     public Result signIn(@RequestBody UserDto userDto) throws IOException {
-        return  userService.sign(userDto);
+        return  userService.login(userDto);
     }
 }
