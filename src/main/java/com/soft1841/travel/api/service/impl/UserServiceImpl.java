@@ -42,6 +42,11 @@ public class UserServiceImpl implements UserService {
     @Resource
     private UserService userService;
 
+    /**
+     * 发送短信
+     * @param phone
+     * @return
+     */
     @Override
     public Result sendSms(String phone) {
         DefaultProfile profile = DefaultProfile.getProfile(
@@ -83,6 +88,11 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * 检查验证码是否正确
+     * @param userDto
+     * @return
+     */
     @Override
     public Result checkSms(UserDto userDto) {
         String phone = userDto.getPhone();
@@ -102,6 +112,11 @@ public class UserServiceImpl implements UserService {
         return Result.failure(ResultCode.USER_CODE_TIMEOUT);
     }
 
+    /**
+     * 登录功能：如果手机号存在登录成功，如果手机号不存在新增，带入默认的用户名，头像等信息，并直接登录成功
+     * @param userDto
+     * @return
+     */
     @Override
     public Result login(UserDto userDto) {
         //调用验证功能
@@ -119,17 +134,17 @@ public class UserServiceImpl implements UserService {
             }
             //用户信息若为空，新增用户
             if (user == null) {
-                SysUser saveUser=new SysUser();
-                saveUser.setPhone(mobile);
-                saveUser.setUserName("用户"+mobile);
-                saveUser.setAvatar("https://niit-soft.oss-cn-hangzhou.aliyuncs.com/avatar/default.png");
+                SysUser sysUser=new SysUser();
+                sysUser.setUserName("用户"+mobile);
+                sysUser.setPhone(mobile);
+                sysUser.setAvatar("https://niit-soft.oss-cn-hangzhou.aliyuncs.com/avatar/default.png");
                 try {
-                    userMapper.insert(saveUser);
+                    userMapper.insert(sysUser);
                 } catch (SQLException e) {
                     logger.error("新增用户出现异常");
                     return Result.failure(ResultCode.USER_SIGN_UP_FAIL);
                 }
-                return  Result.success("登录成功"+saveUser);
+                return  Result.success("登录成功"+sysUser);
             } else {
                 return Result.success("登录成功"+ user);
             }

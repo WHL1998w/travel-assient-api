@@ -5,7 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
@@ -16,47 +17,29 @@ import java.io.Serializable;
  * </p>
  *
  * @author wanghuanle
- * @since 2021-04-25
+ * @since 2021-04-24
  */
 @Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("sys_user")
-public class SysUser extends Model<SysUser> {
+@TableName("sys_area")
+public class SysArea extends Model<SysArea> {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 主键
-     */
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    @TableId(value = "area_id", type = IdType.AUTO)
+    private Integer areaId;
 
     /**
-     * 用户姓名
+     * 地区名
      */
-    @TableField("user_name")
-    private String userName;
-
-    /**
-     * 手机号
-     */
-    @TableField("phone")
-    private String phone;
-
-    /**
-     * 头像
-     */
-    @TableField("avatar")
-    private String avatar;
+    @TableField("area_name")
+    private String areaName;
 
 
     @Override
     protected Serializable pkVal() {
-        return this.id;
+        return this.areaId;
     }
 
 }

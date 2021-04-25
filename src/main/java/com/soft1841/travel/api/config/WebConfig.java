@@ -28,8 +28,8 @@ public class WebConfig implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(jwtInterceptor).addPathPatterns("/**").excludePathPatterns("/sysAdmin/login",
-                "/captcha", "/oauth2/code/github","http://localhost:8088/*","/oauth2/code").excludePathPatterns("/static/**");
+//        registry.addInterceptor(jwtInterceptor).addPathPatterns("/**").excludePathPatterns("/sysAdmin/login",
+//                "/captcha", "/oauth2/code/github","http://localhost:8088/*","/oauth2/code").excludePathPatterns("/static/**");
     }
 }
 

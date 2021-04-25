@@ -32,11 +32,10 @@ public interface UserMapper {
     /**
      * 新增用户，并返回自增主键
      *
-     * @param user
+     * @param sysUser
      * @throws SQLException
      */
-    @Insert("INSERT INTO sys_user (user_name,phone,avatar) " +
-            "VALUES (#{user_name},#{phone},#{avatar}) ")
+    @Insert("INSERT INTO sys_user(user_name,phone,avatar) VALUES (#{userName},#{phone},#{avatar}) ")
     @Options(useGeneratedKeys = true, keyProperty = "id")
-    void insert(SysUser user) throws SQLException;
+    void insert(SysUser sysUser) throws SQLException;
 }
