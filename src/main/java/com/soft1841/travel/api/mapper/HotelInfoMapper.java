@@ -2,7 +2,7 @@ package com.soft1841.travel.api.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.soft1841.travel.api.domain.entity.SysArea;
+import com.soft1841.travel.api.domain.entity.HotelInfo;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.soft1841.travel.api.domain.entity.SysArea;
  * @author wanghuanle
  * @since 2021-05-06
  */
-public interface SysAreaMapper extends BaseMapper<SysArea> {
+public interface HotelInfoMapper extends BaseMapper<HotelInfo> {
 
 }

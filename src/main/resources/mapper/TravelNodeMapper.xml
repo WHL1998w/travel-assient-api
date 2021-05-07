@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soft1841.travel.api.mapper.TravelNodeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.soft1841.travel.api.domain.entity.TravelNode">
+        <id column="id" property="id" />
+        <result column="travel_notes_title" property="travelNotesTitle" />
+        <result column="travel_notes_cover" property="travelNotesCover" />
+        <result column="user_id" property="userId" />
+        <result column="travel_notes_time" property="travelNotesTime" />
+        <result column="travel_notes_view" property="travelNotesView" />
+        <result column="travel_notes_like" property="travelNotesLike" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, travel_notes_title, travel_notes_cover, user_id, travel_notes_time, travel_notes_view, travel_notes_like
+    </sql>
+
+</mapper>

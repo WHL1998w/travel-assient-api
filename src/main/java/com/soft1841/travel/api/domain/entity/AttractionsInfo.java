@@ -5,11 +5,13 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>
@@ -17,7 +19,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author wanghuanle
- * @since 2021-04-24
+ * @since 2021-05-06
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -67,16 +69,20 @@ public class AttractionsInfo extends Model<AttractionsInfo> {
     private String poiTraffic;
 
     /**
-     * 景点门票
+     * 景点图片
      */
-    @TableField("poi_ticket")
-    private String poiTicket;
+    @TableField("poi_image")
+    private String poiImage;
 
     /**
      * 景点开放时间
      */
     @TableField("poi_open_time")
     private String poiOpenTime;
+
+    @JsonIgnore
+    @TableField(exist = false) //数据库不存在的字段
+    private List<PoiTicket> poiTicketList;
 
 
     @Override

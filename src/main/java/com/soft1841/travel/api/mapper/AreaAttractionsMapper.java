@@ -10,7 +10,7 @@ import com.soft1841.travel.api.domain.entity.AreaAttractions;
  * </p>
  *
  * @author wanghuanle
- * @since 2021-04-24
+ * @since 2021-05-06
  */
 public interface AreaAttractionsMapper extends BaseMapper<AreaAttractions> {
 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soft1841.travel.api.mapper.HotelInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.soft1841.travel.api.domain.entity.HotelInfo">
+        <id column="id" property="id" />
+        <result column="hotel_name" property="hotelName" />
+        <result column="hotel_position" property="hotelPosition" />
+        <result column="price" property="price" />
+        <result column="star" property="star" />
+        <result column="image" property="image" />
+        <result column="fraction" property="fraction" />
+        <result column="basic_info" property="basicInfo" />
+        <result column="facility" property="facility" />
+        <result column="raiders" property="raiders" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, hotel_name, hotel_position, price, star, image, fraction, basic_info, facility, raiders
+    </sql>
+
+</mapper>

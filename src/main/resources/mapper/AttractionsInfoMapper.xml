@@ -3,7 +3,7 @@
 <mapper namespace="com.soft1841.travel.api.mapper.AttractionsInfoMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.soft1841.travel.api.domain.entity.AttractionsInfo">
+    <resultMap id="attrationsInfoMap" type="com.soft1841.travel.api.domain.entity.AttractionsInfo">
         <id column="id" property="id" />
         <result column="poi_id" property="poiId" />
         <result column="poi_name" property="poiName" />
@@ -11,13 +11,22 @@
         <result column="poi_address" property="poiAddress" />
         <result column="poi_time" property="poiTime" />
         <result column="poi_traffic" property="poiTraffic" />
-        <result column="poi_ticket" property="poiTicket" />
+        <result column="poi_image" property="poiImage" />
         <result column="poi_open_time" property="poiOpenTime" />
+        <collection property="poiTicketList" ofType="com.soft1841.travel.api.domain.entity.PoiTicket">
+            <result property="poiId" column="poi_id" javaType="java.lang.String"/>
+            <result property="ticket" column="ticket" javaType="java.lang.Double"/>
+            <result property="type" column="type" javaType="java.lang.Integer"/>
+        </collection>
     </resultMap>
 
-    <!-- 通用查询结果列 -->
-    <sql id="Base_Column_List">
-        id, poi_id, poi_name, poi_summary, poi_address, poi_time, poi_traffic, poi_ticket, poi_open_time
-    </sql>
+    <!--两表联查，查出景点的详细信息以及票价-->
+    <select id="getAttractionsById" resultMap="attrationsInfoMap">
+        SELECT t1.*,t2.ticket,type
+            FROM attractions_info t1
+	            LEFT JOIN poi_ticket t2 ON t1.poi_id = t2.poi_id
+            WHERE
+	            t1.poi_id = #{poiId}
+    </select>
 
 </mapper>

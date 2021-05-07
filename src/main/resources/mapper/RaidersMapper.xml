@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soft1841.travel.api.mapper.RaidersMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.soft1841.travel.api.domain.entity.Raiders">
+        <id column="id" property="id" />
+        <result column="raiders_title" property="raidersTitle" />
+        <result column="raiders_cover" property="raidersCover" />
+        <result column="raiders_description" property="raidersDescription" />
+        <result column="user_id" property="userId" />
+        <result column="raiders_views" property="raidersViews" />
+        <result column="raiders_comment" property="raidersComment" />
+        <result column="raiders_source" property="raidersSource" />
+        <result column="departure_time" property="departureTime" />
+        <result column="travel_days" property="travelDays" />
+        <result column="per_capita_cost" property="perCapitaCost" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, raiders_title, raiders_cover, raiders_description, user_id, raiders_views, raiders_comment, raiders_source, departure_time, travel_days, per_capita_cost
+    </sql>
+
+</mapper>

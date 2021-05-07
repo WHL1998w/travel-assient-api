@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soft1841.travel.api.mapper.GourmetFoodMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.soft1841.travel.api.domain.entity.GourmetFood">
+        <id column="id" property="id" />
+        <result column="restaurant_name" property="restaurantName" />
+        <result column="position" property="position" />
+        <result column="score" property="score" />
+        <result column="reviews_num" property="reviewsNum" />
+        <result column="image" property="image" />
+        <result column="introduction" property="introduction" />
+        <result column="traffic" property="traffic" />
+        <result column="consumption" property="consumption" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, restaurant_name, position, score, reviews_num, image, introduction, traffic, consumption
+    </sql>
+
+</mapper>
