@@ -73,4 +73,9 @@ public class AttractionsInfoController {
     public Result blurSelectAttrations (@Valid @Param("field") @Size(min = 2,message = "关键字不得少于两个字") String field) {
         return attractionsInfoService.blurSelect(field);
     }
+
+    @GetMapping(value = "/all")
+    public Result getTopAttrationsList() {
+        return attractionsInfoService.getTopAttrationsInfo();
+    }
 }

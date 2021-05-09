@@ -41,4 +41,10 @@ public interface AttractionsInfoService extends IService<AttractionsInfo> {
      */
     Result blurSelect(String field);
 
+    /**
+     * 查询热门景点信息
+     * @return
+     */
+    Result getTopAttrationsInfo();
+
 }
