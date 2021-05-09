@@ -148,8 +148,9 @@ public class UserServiceImpl implements UserService {
             } else {
                 return Result.success("登录成功"+ user);
             }
+        }else {
+            return  Result.failure(ResultCode.USER_VERIFY_CODE_ERROR);
         }
-        return  Result.failure(ResultCode.USER_VERIFY_CODE_ERROR);
     }
 
     @Override

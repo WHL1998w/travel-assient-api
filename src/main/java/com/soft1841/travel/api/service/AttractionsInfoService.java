@@ -47,4 +47,11 @@ public interface AttractionsInfoService extends IService<AttractionsInfo> {
      */
     Result getTopAttrationsInfo();
 
+    /**
+     * 修改景点浏览量
+     * @param attractionsInfo
+     * @return
+     */
+    Result updateAttrationsInfo(AttractionsInfo attractionsInfo);
+
 }

@@ -45,6 +45,9 @@ public class AttractionsInfoServiceImpl extends ServiceImpl<AttractionsInfoMappe
     @Override
     public Result getAttractionsById(String poiId) {
         AttractionsInfo attractionsInfo = attractionsInfoMapper.getAttractionsById(poiId);
+        attractionsInfo.setViewsNum(attractionsInfo.getViewsNum() + 1);
+        attractionsInfoMapper.updateById(attractionsInfo);
+        System.out.println("修改成功");
         if (attractionsInfo != null){
             Map<String, Object> map = new TreeMap<>();
             map.put("PoiId",attractionsInfo.getPoiId());
@@ -56,14 +59,6 @@ public class AttractionsInfoServiceImpl extends ServiceImpl<AttractionsInfoMappe
             map.put("PoiImage", attractionsInfo.getPoiImage());
             map.put("PoiOpenTime", attractionsInfo.getPoiOpenTime());
             map.put("ViewsNumber",attractionsInfo.getViewsNum());
-
-            AttractionsInfo attractionsInfo1 = new AttractionsInfo();
-            attractionsInfo1.setViewsNum(attractionsInfo.getViewsNum() + 1);
-            UpdateWrapper<AttractionsInfo> updateWrapper = new UpdateWrapper<>();
-            updateWrapper.eq("poi_id",attractionsInfo.getPoiId());
-            System.out.println("修改之后的信息"+attractionsInfoMapper.update(attractionsInfo,updateWrapper));
-
-
             List<PoiTicketVo> list = new ArrayList<>();
             List<PoiTicket> poiTickets = attractionsInfo.getPoiTicketList();
             System.out.println(poiTickets);
@@ -73,9 +68,11 @@ public class AttractionsInfoServiceImpl extends ServiceImpl<AttractionsInfoMappe
             }
             map.put("poiTickets", list);
             return Result.success(map);
+
         }else {
             return Result.failure(ResultCode.DATABASE_ERROR);
         }
+
     }
 
     /**
@@ -119,5 +116,11 @@ public class AttractionsInfoServiceImpl extends ServiceImpl<AttractionsInfoMappe
         wrapper.ge("views_num",2);
         List<AttractionsInfo> attractionsInfos = attractionsInfoMapper.selectList(wrapper);
         return Result.success(attractionsInfos);
+    }
+
+    @Override
+    public Result updateAttrationsInfo(AttractionsInfo attractionsInfo) {
+
+        return null;
     }
 }

@@ -48,7 +48,6 @@ public class AttractionsInfoController {
     @ApiOperation(value = "根据id查询景点详细信息", notes = "根据id查询景点详细信息")
     //@PathVariable路径传参的注解
     Result getAttractionsInfo(@PathVariable String poiId) {
-        log.info(attractionsInfoService.getAttractionsById(poiId).toString());
         return attractionsInfoService.getAttractionsById(poiId);
     }
 
