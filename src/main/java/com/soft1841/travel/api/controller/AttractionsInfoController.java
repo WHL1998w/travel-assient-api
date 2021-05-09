@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.Map;
 
@@ -57,8 +58,19 @@ public class AttractionsInfoController {
      * @return
      */
     @PostMapping("/page")
-    @ApiOperation(value = "分页查询景点详细信息", notes = "分页id查询景点详细信息")
+    @ApiOperation(value = "分页查询景点详细信息", notes = "分页查询景点详细信息")
     Result getByPage(@RequestBody @Valid PageDto pageDto) {
         return attractionsInfoService.getByPage(pageDto);
+    }
+
+    /**
+     * 模糊查询景点接口
+     * @param field
+     * @return
+     */
+    @GetMapping("/blur")
+    @ApiOperation(value = "模糊查询景点信息", notes = "模糊查询景点信息")
+    public Result blurSelectAttrations (@Valid @Param("field") @Size(min = 2,message = "关键字不得少于两个字") String field) {
+        return attractionsInfoService.blurSelect(field);
     }
 }

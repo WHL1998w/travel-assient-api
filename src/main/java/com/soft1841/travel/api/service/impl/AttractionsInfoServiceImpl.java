@@ -8,17 +8,11 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.soft1841.travel.api.common.Result;
 import com.soft1841.travel.api.common.ResultCode;
 import com.soft1841.travel.api.domain.entity.PoiTicket;
-import com.soft1841.travel.api.domain.entity.SysMenu;
-import com.soft1841.travel.api.domain.entity.SysRole;
-import com.soft1841.travel.api.domain.vo.AttrationsInfoVo;
 import com.soft1841.travel.api.domain.dto.PageDto;
 import com.soft1841.travel.api.domain.entity.AttractionsInfo;
 import com.soft1841.travel.api.domain.vo.PoiTicketVo;
 import com.soft1841.travel.api.mapper.AttractionsInfoMapper;
-import com.soft1841.travel.api.mapper.PoiTicketMapper;
 import com.soft1841.travel.api.service.AttractionsInfoService;
-import com.soft1841.travel.api.util.TreeBuilder;
-import com.soft1841.travel.api.util.TreeNode;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -83,5 +77,18 @@ public class AttractionsInfoServiceImpl extends ServiceImpl<AttractionsInfoMappe
         QueryWrapper<AttractionsInfo> wrapper = new QueryWrapper<>();
         IPage<AttractionsInfo> iPage = attractionsInfoMapper.selectPage(page, wrapper);
         return Result.success(iPage);
+    }
+
+    /**
+     * 模糊查询景点信息（根据景点名称，景点所在地区）
+     * @param field
+     * @return
+     */
+    @Override
+    public Result blurSelect(String field) {
+        QueryWrapper<AttractionsInfo> wrapper = new QueryWrapper<>();
+        wrapper.like("poi_name",field).or().like("poi_address",field);
+        List<AttractionsInfo> attractionsInfo = attractionsInfoMapper.selectList(wrapper);
+        return Result.success(attractionsInfo);
     }
 }

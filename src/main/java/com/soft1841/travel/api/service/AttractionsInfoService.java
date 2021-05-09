@@ -34,4 +34,11 @@ public interface AttractionsInfoService extends IService<AttractionsInfo> {
      */
     Result getByPage(PageDto pageDto);
 
+    /**
+     * 模糊查询景点信息
+     * @param field
+     * @return
+     */
+    Result blurSelect(String field);
+
 }
