@@ -75,6 +75,7 @@ public class AttractionsInfoController {
     }
 
     @GetMapping(value = "/all")
+    @ApiOperation(value = "查询热门景点信息", notes = "查询热门景点信息")
     public Result getTopAttrationsList() {
         return attractionsInfoService.getTopAttrationsInfo();
     }

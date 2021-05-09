@@ -85,10 +85,15 @@ public class AttractionsInfoServiceImpl extends ServiceImpl<AttractionsInfoMappe
      */
     @Override
     public Result getByPage(PageDto pageDto) {
-        Page<AttractionsInfo> page = new Page<>(pageDto.getCurrentPage(),pageDto.getPageSize());
         QueryWrapper<AttractionsInfo> wrapper = new QueryWrapper<>();
-        IPage<AttractionsInfo> iPage = attractionsInfoMapper.selectPage(page, wrapper);
-        return Result.success(iPage);
+        if (pageDto.getCurrentPage() == 0 && pageDto.getPageSize() == 0){
+            List<AttractionsInfo> attractionsInfo = attractionsInfoMapper.selectList(wrapper);
+            return Result.success(attractionsInfo);
+        }else {
+            Page<AttractionsInfo> page = new Page<>(pageDto.getCurrentPage(),pageDto.getPageSize());
+            IPage<AttractionsInfo> iPage = attractionsInfoMapper.selectPage(page, wrapper);
+            return Result.success(iPage);
+        }
     }
 
     /**
