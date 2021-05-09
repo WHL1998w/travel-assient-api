@@ -1,6 +1,7 @@
 package com.soft1841.travel.api.controller;
 
 
+import com.soft1841.travel.api.common.Result;
 import com.soft1841.travel.api.domain.vo.AttrationsInfoVo;
 import com.soft1841.travel.api.domain.dto.PageDto;
 import com.soft1841.travel.api.domain.entity.AttractionsInfo;
@@ -45,20 +46,19 @@ public class AttractionsInfoController {
     @GetMapping("/{poiId}")
     @ApiOperation(value = "根据id查询景点详细信息", notes = "根据id查询景点详细信息")
     //@PathVariable路径传参的注解
-    public Map getAttractionsInfo(@PathVariable String poiId) {
+    Result getAttractionsInfo(@PathVariable String poiId) {
         log.info(attractionsInfoService.getAttractionsById(poiId).toString());
         return attractionsInfoService.getAttractionsById(poiId);
     }
 
     /**
      * 分页查询
-     * @param currentPage
-     * @param size
+     * @param pageDto
      * @return
      */
     @PostMapping("/page")
     @ApiOperation(value = "分页查询景点详细信息", notes = "分页id查询景点详细信息")
-    public List<AttractionsInfo> getByPage(@Param("currentPage") int currentPage, @Param("size") int size) {
-        return attractionsInfoService.getByPage(currentPage, size);
+    Result getByPage(@RequestBody @Valid PageDto pageDto) {
+        return attractionsInfoService.getByPage(pageDto);
     }
 }

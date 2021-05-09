@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.soft1841.travel.api.common.Result;
+import com.soft1841.travel.api.common.ResultCode;
 import com.soft1841.travel.api.domain.entity.PoiTicket;
 import com.soft1841.travel.api.domain.entity.SysMenu;
 import com.soft1841.travel.api.domain.entity.SysRole;
@@ -39,36 +41,47 @@ public class AttractionsInfoServiceImpl extends ServiceImpl<AttractionsInfoMappe
     @Resource
     private AttractionsInfoMapper attractionsInfoMapper;
 
-
-
+    /**
+     * 根据景点id查询景点详情
+     * @param poiId
+     * @return
+     */
     @Override
-    public Map<String, Object> getAttractionsById(String poiId) {
+    public Result getAttractionsById(String poiId) {
         AttractionsInfo attractionsInfo = attractionsInfoMapper.getAttractionsById(poiId);
-        Map<String, Object> map = new TreeMap<>();
-        map.put("PoiName", attractionsInfo.getPoiName());
-        map.put("PoiSummary", attractionsInfo.getPoiSummary());
-        map.put("PoiAddress", attractionsInfo.getPoiAddress());
-        map.put("PoiTime", attractionsInfo.getPoiTime());
-        map.put("PoiTraffic", attractionsInfo.getPoiTraffic());
-        map.put("PoiImage", attractionsInfo.getPoiImage());
-        map.put("PoiOpenTime", attractionsInfo.getPoiOpenTime());
-
-        List<PoiTicketVo> list = new ArrayList<>();
-        List<PoiTicket> poiTickets = attractionsInfo.getPoiTicketList();
-        System.out.println(poiTickets);
-        for (PoiTicket poiTicket : poiTickets) {
-            PoiTicketVo poiTicketVo = new PoiTicketVo(poiTicket.getTicket(), poiTicket.getType());
-            list.add(poiTicketVo);
+        if (attractionsInfo != null){
+            Map<String, Object> map = new TreeMap<>();
+            map.put("PoiName", attractionsInfo.getPoiName());
+            map.put("PoiSummary", attractionsInfo.getPoiSummary());
+            map.put("PoiAddress", attractionsInfo.getPoiAddress());
+            map.put("PoiTime", attractionsInfo.getPoiTime());
+            map.put("PoiTraffic", attractionsInfo.getPoiTraffic());
+            map.put("PoiImage", attractionsInfo.getPoiImage());
+            map.put("PoiOpenTime", attractionsInfo.getPoiOpenTime());
+            List<PoiTicketVo> list = new ArrayList<>();
+            List<PoiTicket> poiTickets = attractionsInfo.getPoiTicketList();
+            System.out.println(poiTickets);
+            for (PoiTicket poiTicket : poiTickets) {
+                PoiTicketVo poiTicketVo = new PoiTicketVo(poiTicket.getTicket(), poiTicket.getType());
+                list.add(poiTicketVo);
+            }
+            map.put("poiTickets", list);
+            return Result.success(map);
+        }else {
+            return Result.failure(ResultCode.DATABASE_ERROR);
         }
-        map.put("poiTickets", list);
-        return map;
     }
 
+    /**
+     * 分页查询景点信息
+     * @param pageDto
+     * @return
+     */
     @Override
-    public List<AttractionsInfo> getByPage(int current, int size) {
-        Page<AttractionsInfo> page = new Page<>(current, size);
+    public Result getByPage(PageDto pageDto) {
+        Page<AttractionsInfo> page = new Page<>();
         QueryWrapper<AttractionsInfo> wrapper = new QueryWrapper<>();
         IPage<AttractionsInfo> iPage = attractionsInfoMapper.selectPage(page, wrapper);
-        return iPage.getRecords();
+        return Result.success(iPage);
     }
 }

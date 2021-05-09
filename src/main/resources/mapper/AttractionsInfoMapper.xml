@@ -13,6 +13,7 @@
         <result column="poi_traffic" property="poiTraffic" />
         <result column="poi_image" property="poiImage" />
         <result column="poi_open_time" property="poiOpenTime" />
+        <result column="views_num" property="viewsNum" />
         <collection property="poiTicketList" ofType="com.soft1841.travel.api.domain.entity.PoiTicket">
             <result property="poiId" column="poi_id" javaType="java.lang.String"/>
             <result property="ticket" column="ticket" javaType="java.lang.Double"/>

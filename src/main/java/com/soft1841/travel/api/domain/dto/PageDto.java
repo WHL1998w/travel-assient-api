@@ -12,7 +12,7 @@ import lombok.Data;
 @Data
 @Builder
 public class PageDto {
-    private Object field;
+//    private Object field;
     private int currentPage;
     private int pageSize;
 }

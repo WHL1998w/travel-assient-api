@@ -80,6 +80,12 @@ public class AttractionsInfo extends Model<AttractionsInfo> {
     @TableField("poi_open_time")
     private String poiOpenTime;
 
+    /**
+     * 景点浏览量
+     */
+    @TableField("views_num")
+    private Integer viewsNum;
+
     @JsonIgnore
     @TableField(exist = false) //数据库不存在的字段
     private List<PoiTicket> poiTicketList;

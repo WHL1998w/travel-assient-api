@@ -24,6 +24,8 @@ class AttractionsInfoMapperTest {
         System.out.println(attractionsInfo.getPoiId());
         System.out.println(attractionsInfo.getPoiName());
         System.out.println(attractionsInfo.getPoiAddress());
+        System.out.println(attractionsInfo.getViewsNum());
+
         System.out.println("景点门票");
         List<PoiTicket> poiTicketList = attractionsInfo.getPoiTicketList();
         System.out.println(poiTicketList);
