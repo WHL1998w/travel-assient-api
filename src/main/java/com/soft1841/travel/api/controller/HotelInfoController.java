@@ -3,7 +3,7 @@ package com.soft1841.travel.api.controller;
 
 import com.soft1841.travel.api.common.Result;
 import com.soft1841.travel.api.domain.dto.PageDto;
-import com.soft1841.travel.api.service.AttractionsInfoService;
+import com.soft1841.travel.api.service.HotelInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -22,29 +22,26 @@ import javax.validation.constraints.Size;
  * </p>
  *
  * @author wanghuanle
- * @since 2021-04-24
+ * @since 2021-05-06
  */
-
 @Slf4j
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-@Api(tags = "景点接口", value = "景点相关的Rest API")
+@Api(tags = "酒店接口", value = "酒店相关的Rest API")
 @RestController
-@RequestMapping("/attractionsInfo")
-public class AttractionsInfoController {
-
+@RequestMapping("/hotelInfo")
+public class HotelInfoController {
 
     @Resource
-    private AttractionsInfoService attractionsInfoService;
-
+    private HotelInfoService hotelInfoService;
 
     /**
-     * 根据id查询景点详细信息
+     * 根据酒店id查询酒店详细信息
      */
-    @GetMapping("/{poiId}")
-    @ApiOperation(value = "根据id查询景点详细信息", notes = "根据id查询景点详细信息")
+    @GetMapping("/{id}")
+    @ApiOperation(value = "根据酒店id查询酒店详细信息", notes = "根据酒店id查询酒店详细信息")
     //@PathVariable路径传参的注解
-    Result getAttractionsInfo(@PathVariable String poiId) {
-        return attractionsInfoService.getAttractionsById(poiId);
+    Result getHotelsInfo(@PathVariable Integer id) {
+        return hotelInfoService.getHotelInfoById(id);
     }
 
     /**
@@ -53,28 +50,29 @@ public class AttractionsInfoController {
      * @return
      */
     @PostMapping("/page")
-    @ApiOperation(value = "分页查询景点详细信息", notes = "分页查询景点详细信息")
+    @ApiOperation(value = "分页查询酒店详细信息", notes = "分页查询酒店详细信息")
     Result getByPage(@RequestBody @Valid PageDto pageDto) {
-        return attractionsInfoService.getByPage(pageDto);
+        return hotelInfoService.getByPage(pageDto);
     }
 
     /**
-     * 模糊查询景点接口
+     * 模糊查询酒店接口
      * @param field
      * @return
      */
     @GetMapping("/blur")
-    @ApiOperation(value = "模糊查询景点信息", notes = "模糊查询景点信息")
+    @ApiOperation(value = "模糊查询酒店接口", notes = "模糊查询酒店接口")
     public Result blurSelectAttrations (@Valid @Param("field") @Size(min = 2,message = "关键字不得少于两个字") String field) {
-        return attractionsInfoService.blurSelect(field);
+        return hotelInfoService.blurSelect(field);
     }
 
     /**
-     * 查询热门景点信息
+     * 查询热门酒店信息
      */
     @GetMapping(value = "/all")
-    @ApiOperation(value = "查询热门景点信息", notes = "查询热门景点信息")
+    @ApiOperation(value = "查询热门酒店信息", notes = "查询热门酒店信息")
     public Result getTopAttrationsList() {
-        return attractionsInfoService.getTopAttrationsInfo();
+        return hotelInfoService.getTopHotelsInfo();
     }
+
 }

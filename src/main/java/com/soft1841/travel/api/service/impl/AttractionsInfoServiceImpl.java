@@ -118,9 +118,4 @@ public class AttractionsInfoServiceImpl extends ServiceImpl<AttractionsInfoMappe
         return Result.success(attractionsInfos);
     }
 
-    @Override
-    public Result updateAttrationsInfo(AttractionsInfo attractionsInfo) {
-
-        return null;
-    }
 }

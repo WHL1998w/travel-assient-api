@@ -4,11 +4,13 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>
@@ -85,6 +87,11 @@ public class HotelInfo extends Model<HotelInfo> {
      */
     @TableField("raiders")
     private String raiders;
+
+    //房间类型
+    @JsonIgnore
+    @TableField(exist = false) //数据库不存在的字段
+    private List<RoomType> roomTypeList;
 
 
     @Override

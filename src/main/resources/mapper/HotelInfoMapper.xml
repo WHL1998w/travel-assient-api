@@ -3,7 +3,7 @@
 <mapper namespace="com.soft1841.travel.api.mapper.HotelInfoMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.soft1841.travel.api.domain.entity.HotelInfo">
+    <resultMap id="hotelInfoMap" type="com.soft1841.travel.api.domain.entity.HotelInfo">
         <id column="id" property="id" />
         <result column="hotel_name" property="hotelName" />
         <result column="hotel_position" property="hotelPosition" />
@@ -14,11 +14,21 @@
         <result column="basic_info" property="basicInfo" />
         <result column="facility" property="facility" />
         <result column="raiders" property="raiders" />
+        <collection property="roomTypeList" ofType="com.soft1841.travel.api.domain.entity.RoomType">
+            <result property="hotelId" column="hotel_id" javaType="java.lang.Integer"/>
+            <result property="roomType" column="room_type" javaType="java.lang.String"/>
+            <result property="roomPrice" column="room_price" javaType="java.lang.Double"/>
+            <result property="roomNum" column="room_num" javaType="java.lang.Integer"/>
+        </collection>
     </resultMap>
 
-    <!-- 通用查询结果列 -->
-    <sql id="Base_Column_List">
-        id, hotel_name, hotel_position, price, star, image, fraction, basic_info, facility, raiders
-    </sql>
+    <!--两表联查，查出酒店的详细信息以及房间类型-->
+    <select id="getHotelInfoById" resultMap="hotelInfoMap">
+        SELECT t1.*,t2.room_type,room_price,room_num
+            FROM hotel_info t1
+	            LEFT JOIN room_type t2 ON t1.id = t2.hotel_id
+            WHERE
+	            t1.id = #{id}
+    </select>
 
 </mapper>

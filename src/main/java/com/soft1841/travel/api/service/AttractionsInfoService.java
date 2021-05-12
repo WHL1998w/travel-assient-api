@@ -3,12 +3,8 @@ package com.soft1841.travel.api.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.soft1841.travel.api.common.Result;
-import com.soft1841.travel.api.domain.vo.AttrationsInfoVo;
 import com.soft1841.travel.api.domain.dto.PageDto;
 import com.soft1841.travel.api.domain.entity.AttractionsInfo;
-
-import java.util.List;
-import java.util.Map;
 
 /**
  * <p>
@@ -47,11 +43,5 @@ public interface AttractionsInfoService extends IService<AttractionsInfo> {
      */
     Result getTopAttrationsInfo();
 
-    /**
-     * 修改景点浏览量
-     * @param attractionsInfo
-     * @return
-     */
-    Result updateAttrationsInfo(AttractionsInfo attractionsInfo);
 
 }
