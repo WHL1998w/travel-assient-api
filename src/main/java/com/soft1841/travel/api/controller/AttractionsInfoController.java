@@ -2,6 +2,7 @@ package com.soft1841.travel.api.controller;
 
 
 import com.soft1841.travel.api.common.Result;
+import com.soft1841.travel.api.domain.dto.AppointmentAttraDto;
 import com.soft1841.travel.api.domain.dto.PageDto;
 import com.soft1841.travel.api.service.AttractionsInfoService;
 import io.swagger.annotations.Api;
@@ -76,5 +77,17 @@ public class AttractionsInfoController {
     @ApiOperation(value = "查询热门景点信息", notes = "查询热门景点信息")
     public Result getTopAttrationsList() {
         return attractionsInfoService.getTopAttrationsInfo();
+    }
+
+    /**
+     * 预约景点
+     * @param appointmentAttraDto
+     * @return
+     */
+    @PostMapping("/appointment")
+    @ApiOperation(value = "预约景点", notes = "预约景点")
+    public Result insertAppoinAttrations(@RequestBody AppointmentAttraDto appointmentAttraDto){
+        log.info((appointmentAttraDto.toString()));
+        return this.attractionsInfoService.insertAppoinAttration(appointmentAttraDto);
     }
 }

@@ -3,6 +3,7 @@ package com.soft1841.travel.api.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.soft1841.travel.api.common.Result;
+import com.soft1841.travel.api.domain.dto.AppointmentAttraDto;
 import com.soft1841.travel.api.domain.dto.PageDto;
 import com.soft1841.travel.api.domain.entity.AttractionsInfo;
 
@@ -42,6 +43,13 @@ public interface AttractionsInfoService extends IService<AttractionsInfo> {
      * @return
      */
     Result getTopAttrationsInfo();
+
+    /**
+     * 预约景点
+     * @param appointmentAttraDto
+     * @return
+     */
+    Result insertAppoinAttration(AppointmentAttraDto appointmentAttraDto);
 
 
 }

@@ -2,19 +2,18 @@ package com.soft1841.travel.api.service.impl;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.soft1841.travel.api.common.Result;
 import com.soft1841.travel.api.common.ResultCode;
+import com.soft1841.travel.api.domain.dto.AppointmentAttraDto;
 import com.soft1841.travel.api.domain.entity.PoiTicket;
 import com.soft1841.travel.api.domain.dto.PageDto;
 import com.soft1841.travel.api.domain.entity.AttractionsInfo;
 import com.soft1841.travel.api.domain.vo.PoiTicketVo;
 import com.soft1841.travel.api.mapper.AttractionsInfoMapper;
 import com.soft1841.travel.api.service.AttractionsInfoService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -116,6 +115,17 @@ public class AttractionsInfoServiceImpl extends ServiceImpl<AttractionsInfoMappe
         wrapper.ge("views_num",2);
         List<AttractionsInfo> attractionsInfos = attractionsInfoMapper.selectList(wrapper);
         return Result.success(attractionsInfos);
+    }
+
+    /**
+     * 预约景点
+     * @param appointmentAttraDto
+     * @return
+     */
+    @Override
+    public Result insertAppoinAttration(AppointmentAttraDto appointmentAttraDto) {
+      attractionsInfoMapper.insertAppoinAttrations(appointmentAttraDto);
+      return Result.success(appointmentAttraDto);
     }
 
 }

@@ -2,8 +2,12 @@ package com.soft1841.travel.api.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.soft1841.travel.api.domain.dto.AppointmentAttraDto;
 import com.soft1841.travel.api.domain.entity.AttractionsInfo;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
+
 
 /**
  * <p>
@@ -22,4 +26,12 @@ public interface AttractionsInfoMapper extends BaseMapper<AttractionsInfo> {
       */
     AttractionsInfo getAttractionsById(@Param("poiId") String poiId);
 
+
+    /**
+     * 预约景点接口
+     * @param appointmentAttraDto
+     */
+    @Insert("INSERT INTO user_appointment(name,phone,appointment_name,accompany_nums,check_in_time,remarks) values (#{name},#{phone},#{appointmentName},#{accompanyNums},#{checkInTime},#{remarks})")
+    @Options(useGeneratedKeys = true,keyProperty = "id")
+    void insertAppoinAttrations(AppointmentAttraDto appointmentAttraDto);
 }

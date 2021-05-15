@@ -1,5 +1,6 @@
 package com.soft1841.travel.api.mapper;
 
+import com.soft1841.travel.api.domain.dto.AppointmentAttraDto;
 import com.soft1841.travel.api.domain.entity.AttractionsInfo;
 import com.soft1841.travel.api.domain.entity.PoiTicket;
 import com.soft1841.travel.api.domain.entity.SysAdmin;
@@ -9,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
 
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -34,4 +36,15 @@ class AttractionsInfoMapperTest {
         }
     }
 
+
+    @Test
+    void insertAppoinAttrations() {
+        AppointmentAttraDto appointmentAttraDto = new AppointmentAttraDto();
+        appointmentAttraDto.setName("王欢乐");
+        appointmentAttraDto.setPhone("18805162578");
+        appointmentAttraDto.setAppointmentName("总统府");
+        appointmentAttraDto.setAccompanyNums(2);
+        appointmentAttraDto.setCheckInTime(new Date());
+        attractionsInfoMapper.insertAppoinAttrations(appointmentAttraDto);
+    }
 }
