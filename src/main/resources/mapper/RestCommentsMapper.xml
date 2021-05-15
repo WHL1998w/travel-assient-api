@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soft1841.travel.api.mapper.RestCommentsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.soft1841.travel.api.domain.entity.GourmetFood">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId" />
+        <result column="restaurant_id" property="restaurantId" />
+        <result column="comments" property="comments" />
+        <result column="comments_time" property="commentsTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, user_id, restaurant_id, comments, comments_time
+    </sql>
+
+</mapper>

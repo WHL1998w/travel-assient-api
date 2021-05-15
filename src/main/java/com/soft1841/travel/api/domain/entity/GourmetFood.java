@@ -4,15 +4,17 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>
- * 
+ *美食实体类
  * </p>
  *
  * @author wanghuanle
@@ -77,6 +79,18 @@ public class GourmetFood extends Model<GourmetFood> {
     @TableField("consumption")
     private Double consumption;
 
+    /**
+     * 餐厅电话
+     */
+    @TableField("phone")
+    private String phone;
+
+    @JsonIgnore
+    @TableField(exist = false) //数据库不存在的字段
+    private List<RestComments> restCommentsList;
+    //关联字段无需注解
+   private  String userName;
+   private  String avatar;
 
     @Override
     protected Serializable pkVal() {

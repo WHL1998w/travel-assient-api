@@ -3,7 +3,7 @@
 <mapper namespace="com.soft1841.travel.api.mapper.GourmetFoodMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.soft1841.travel.api.domain.entity.GourmetFood">
+    <resultMap id="gourmetFoodMap" type="com.soft1841.travel.api.domain.entity.GourmetFood">
         <id column="id" property="id" />
         <result column="restaurant_name" property="restaurantName" />
         <result column="position" property="position" />
@@ -13,11 +13,30 @@
         <result column="introduction" property="introduction" />
         <result column="traffic" property="traffic" />
         <result column="consumption" property="consumption" />
+<!--        //写法一  可以直接在这边写  //第二种  不写在这边 直接写在sql区域-->
+<!--        <result column="userName" property="userName" />-->
+<!--        <result column="avatar" property="avatar" />-->
+        <result column="phone" property="phone" />
+        <collection property="restCommentsList" ofType="com.soft1841.travel.api.domain.entity.RestComments">
+            <result property="id" column="id" javaType="java.lang.Integer"/>
+            <result property="userId" column="user_id" javaType="java.lang.Integer"/>
+            <result property="restaurantId" column="restaurant_id" javaType="java.lang.Integer"/>
+            <result column="user_name" property="user_name" javaType="java.lang.String"/>
+            <result column="avatar" property="avatar" javaType="java.lang.String"/>
+            <result property="comments" column="comments" javaType="java.lang.String"/>
+            <result property="commentsTime" column="comments_time" javaType="java.time.LocalDateTime"/>
+        </collection>
     </resultMap>
 
-    <!-- 通用查询结果列 -->
-    <sql id="Base_Column_List">
-        id, restaurant_name, position, score, reviews_num, image, introduction, traffic, consumption
-    </sql>
+    <!--三表联查，查出餐厅的详细信息以及点评情况-->
+    <select id="getGourmetFoodById" resultMap="gourmetFoodMap">
+        SELECT t1.*,t2.restaurant_id,t2.comments,t2.comments_time,t2.user_id,t3.user_name as user_name,t3.avatar as avatar
+        FROM gourmet_food t1,
+             rest_comments t2,
+             sys_user t3
+        WHERE t1.id = t2.restaurant_id
+          AND t2.user_id = t3.id
+          AND t1.id = #{id}
+    </select>
 
 </mapper>

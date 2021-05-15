@@ -25,7 +25,7 @@ class UserMapperTest {
         sysUser.setPhone("18851853957");
         sysUser.setAvatar("https://niit-soft.oss-cn-hangzhou.aliyuncs.com/avatar/default.png");
         try {
-            userMapper.insert(sysUser);
+            userMapper.insertUser(sysUser);
         } catch (SQLException e) {
             System.out.println("新增用户信息"+sysUser);
         }

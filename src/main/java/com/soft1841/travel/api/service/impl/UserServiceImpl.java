@@ -139,7 +139,7 @@ public class UserServiceImpl implements UserService {
                 sysUser.setPhone(mobile);
                 sysUser.setAvatar("https://niit-soft.oss-cn-hangzhou.aliyuncs.com/avatar/default.png");
                 try {
-                    userMapper.insert(sysUser);
+                    userMapper.insertUser(sysUser);
                 } catch (SQLException e) {
                     logger.error("新增用户出现异常");
                     return Result.failure(ResultCode.USER_SIGN_UP_FAIL);

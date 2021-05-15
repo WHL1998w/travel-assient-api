@@ -1,5 +1,7 @@
 package com.soft1841.travel.api.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.soft1841.travel.api.domain.entity.SysRole;
 import com.soft1841.travel.api.domain.entity.SysUser;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
@@ -14,7 +16,7 @@ import java.sql.SQLException;
  * @Author wanghuanle
  * @Date
  **/
-public interface UserMapper {
+public interface UserMapper extends BaseMapper<SysUser> {
 
     /**
      * 根据手机号查找用户
@@ -37,5 +39,5 @@ public interface UserMapper {
      */
     @Insert("INSERT INTO sys_user(user_name,phone,avatar) VALUES (#{userName},#{phone},#{avatar}) ")
     @Options(useGeneratedKeys = true, keyProperty = "id")
-    void insert(SysUser sysUser) throws SQLException;
+    void insertUser(SysUser sysUser) throws SQLException;
 }
