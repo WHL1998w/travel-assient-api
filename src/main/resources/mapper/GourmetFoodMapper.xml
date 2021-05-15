@@ -13,9 +13,6 @@
         <result column="introduction" property="introduction" />
         <result column="traffic" property="traffic" />
         <result column="consumption" property="consumption" />
-<!--        //写法一  可以直接在这边写  //第二种  不写在这边 直接写在sql区域-->
-<!--        <result column="userName" property="userName" />-->
-<!--        <result column="avatar" property="avatar" />-->
         <result column="phone" property="phone" />
         <collection property="restCommentsList" ofType="com.soft1841.travel.api.domain.entity.RestComments">
             <result property="id" column="id" javaType="java.lang.Integer"/>

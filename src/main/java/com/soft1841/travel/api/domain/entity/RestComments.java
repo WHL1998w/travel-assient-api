@@ -51,6 +51,7 @@ public class RestComments extends Model<RestComments> {
      */
     @TableField("comments")
     private String comments;
+
     //关联字段无需注解
     private  String user_name;
     private  String avatar;

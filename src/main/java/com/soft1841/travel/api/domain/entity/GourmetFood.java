@@ -47,7 +47,7 @@ public class GourmetFood extends Model<GourmetFood> {
      * 评分
      */
     @TableField("score")
-    private Double score;
+    private Integer score;
 
     /**
      * 点评人数
@@ -88,9 +88,6 @@ public class GourmetFood extends Model<GourmetFood> {
     @JsonIgnore
     @TableField(exist = false) //数据库不存在的字段
     private List<RestComments> restCommentsList;
-    //关联字段无需注解
-   private  String userName;
-   private  String avatar;
 
     @Override
     protected Serializable pkVal() {

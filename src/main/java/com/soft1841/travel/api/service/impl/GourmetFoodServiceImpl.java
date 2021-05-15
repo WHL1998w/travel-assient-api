@@ -1,6 +1,8 @@
 package com.soft1841.travel.api.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.soft1841.travel.api.common.Result;
 import com.soft1841.travel.api.common.ResultCode;
@@ -77,7 +79,15 @@ public class GourmetFoodServiceImpl extends ServiceImpl<GourmetFoodMapper, Gourm
      */
     @Override
     public Result getByPage(PageDto pageDto) {
-        return null;
+        QueryWrapper<GourmetFood> wrapper = new QueryWrapper<>();
+        if (pageDto.getCurrentPage() == 0 && pageDto.getPageSize() == 0){
+            List<GourmetFood> gourmetFoodList = gourmetFoodMapper.selectList(wrapper);
+            return Result.success(gourmetFoodList);
+        }else {
+            Page<GourmetFood> page = new Page<>(pageDto.getCurrentPage(),pageDto.getPageSize());
+            IPage<GourmetFood> iPage = gourmetFoodMapper.selectPage(page, wrapper);
+            return Result.success(iPage);
+        }
     }
 
     /**
@@ -87,7 +97,10 @@ public class GourmetFoodServiceImpl extends ServiceImpl<GourmetFoodMapper, Gourm
      */
     @Override
     public Result blurSelect(String field) {
-        return null;
+        QueryWrapper<GourmetFood> wrapper = new QueryWrapper<>();
+        wrapper.like("restaurant_name",field).or().like("position",field);
+        List<GourmetFood> gourmetFoodList = gourmetFoodMapper.selectList(wrapper);
+        return Result.success(gourmetFoodList);
     }
 
     /**
@@ -96,6 +109,9 @@ public class GourmetFoodServiceImpl extends ServiceImpl<GourmetFoodMapper, Gourm
      */
     @Override
     public Result getTopGourmentFood() {
-        return null;
+        QueryWrapper<GourmetFood> wrapper = new QueryWrapper<>();
+        wrapper.ge("score",5);
+        List<GourmetFood> gourmetFoodList = gourmetFoodMapper.selectList(wrapper);
+        return Result.success(gourmetFoodList);
     }
 }
