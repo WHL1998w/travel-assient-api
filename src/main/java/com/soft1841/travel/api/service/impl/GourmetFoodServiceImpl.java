@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.soft1841.travel.api.common.Result;
 import com.soft1841.travel.api.common.ResultCode;
+import com.soft1841.travel.api.domain.dto.AppointmentGourmetFoodDto;
 import com.soft1841.travel.api.domain.dto.PageDto;
 import com.soft1841.travel.api.domain.entity.*;
 import com.soft1841.travel.api.domain.vo.PoiTicketVo;
@@ -112,5 +113,16 @@ public class GourmetFoodServiceImpl extends ServiceImpl<GourmetFoodMapper, Gourm
         wrapper.ge("score",5);
         List<GourmetFood> gourmetFoodList = gourmetFoodMapper.selectList(wrapper);
         return Result.success(gourmetFoodList);
+    }
+
+    /**
+     * 预约餐厅
+     * @param foodDto
+     * @return
+     */
+    @Override
+    public Result insertAppoinFood(AppointmentGourmetFoodDto foodDto) {
+        gourmetFoodMapper.insertAppoinGourmetFood(foodDto);
+        return Result.success(foodDto);
     }
 }

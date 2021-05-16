@@ -2,6 +2,8 @@ package com.soft1841.travel.api.controller;
 
 
 import com.soft1841.travel.api.common.Result;
+import com.soft1841.travel.api.domain.dto.AppointmentAttraDto;
+import com.soft1841.travel.api.domain.dto.AppointmentGourmetFoodDto;
 import com.soft1841.travel.api.domain.dto.PageDto;
 import com.soft1841.travel.api.service.GourmetFoodService;
 import io.swagger.annotations.Api;
@@ -73,6 +75,18 @@ public class GourmetFoodController {
     @ApiOperation(value = "查询热门美食信息", notes = "查询热门美食信息")
     public Result getTopGourmetFoodList() {
         return gourmetFoodService.getTopGourmentFood();
+    }
+
+    /**
+     * 预约餐厅
+     * @param foodDto
+     * @return
+     */
+    @PostMapping("/appointment")
+    @ApiOperation(value = "预约美食", notes = "预约美食")
+    public Result insertAppoinAttrations(@RequestBody AppointmentGourmetFoodDto foodDto){
+        log.info((gourmetFoodService.toString()));
+        return this.gourmetFoodService.insertAppoinFood(foodDto);
     }
 
 }

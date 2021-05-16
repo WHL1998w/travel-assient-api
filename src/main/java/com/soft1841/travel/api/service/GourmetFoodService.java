@@ -3,6 +3,8 @@ package com.soft1841.travel.api.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.soft1841.travel.api.common.Result;
+import com.soft1841.travel.api.domain.dto.AppointmentAttraDto;
+import com.soft1841.travel.api.domain.dto.AppointmentGourmetFoodDto;
 import com.soft1841.travel.api.domain.dto.PageDto;
 import com.soft1841.travel.api.domain.entity.GourmetFood;
 
@@ -42,5 +44,12 @@ public interface GourmetFoodService extends IService<GourmetFood> {
      * @return
      */
     Result getTopGourmentFood();
+
+    /**
+     * 预约餐厅
+     * @param foodDto
+     * @return
+     */
+    Result insertAppoinFood(AppointmentGourmetFoodDto foodDto);
 
 }
