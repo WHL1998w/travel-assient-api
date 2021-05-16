@@ -2,6 +2,8 @@ package com.soft1841.travel.api.controller;
 
 
 import com.soft1841.travel.api.common.Result;
+import com.soft1841.travel.api.domain.dto.AppointmentAttraDto;
+import com.soft1841.travel.api.domain.dto.AppointmentHotelDto;
 import com.soft1841.travel.api.domain.dto.PageDto;
 import com.soft1841.travel.api.service.HotelInfoService;
 import io.swagger.annotations.Api;
@@ -75,4 +77,15 @@ public class HotelInfoController {
         return hotelInfoService.getTopHotelsInfo();
     }
 
+    /**
+     * 预约酒店
+     * @param hotelDto
+     * @return
+     */
+    @PostMapping("/appointment")
+    @ApiOperation(value = "预约酒店", notes = "预约酒店")
+    public Result insertAppoinHotels(@RequestBody AppointmentHotelDto hotelDto){
+        log.info((hotelDto.toString()));
+        return this.hotelInfoService.insertAppoinHotel(hotelDto);
+    }
 }

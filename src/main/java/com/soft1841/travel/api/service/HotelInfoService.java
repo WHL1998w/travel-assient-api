@@ -3,6 +3,8 @@ package com.soft1841.travel.api.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.soft1841.travel.api.common.Result;
+import com.soft1841.travel.api.domain.dto.AppointmentAttraDto;
+import com.soft1841.travel.api.domain.dto.AppointmentHotelDto;
 import com.soft1841.travel.api.domain.dto.PageDto;
 import com.soft1841.travel.api.domain.entity.HotelInfo;
 
@@ -42,5 +44,12 @@ public interface HotelInfoService extends IService<HotelInfo> {
      * @return
      */
     Result getTopHotelsInfo();
+
+    /**
+     * 预约酒店
+     * @param hotelDto
+     * @return
+     */
+    Result insertAppoinHotel(AppointmentHotelDto hotelDto);
 
 }

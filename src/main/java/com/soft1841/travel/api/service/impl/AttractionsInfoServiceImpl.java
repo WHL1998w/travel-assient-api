@@ -71,7 +71,6 @@ public class AttractionsInfoServiceImpl extends ServiceImpl<AttractionsInfoMappe
         }else {
             return Result.failure(ResultCode.DATABASE_ERROR);
         }
-
     }
 
     /**

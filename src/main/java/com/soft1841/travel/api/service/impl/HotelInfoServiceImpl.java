@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.soft1841.travel.api.common.Result;
 import com.soft1841.travel.api.common.ResultCode;
+import com.soft1841.travel.api.domain.dto.AppointmentHotelDto;
 import com.soft1841.travel.api.domain.dto.PageDto;
 import com.soft1841.travel.api.domain.entity.AttractionsInfo;
 import com.soft1841.travel.api.domain.entity.HotelInfo;
@@ -112,5 +113,16 @@ public class HotelInfoServiceImpl extends ServiceImpl<HotelInfoMapper, HotelInfo
         wrapper.ge("fraction","8.5分");
         List<HotelInfo> hotelInfos = hotelInfoMapper.selectList(wrapper);
         return Result.success(hotelInfos);
+    }
+
+    /**
+     * 预约酒店
+     * @param hotelDto
+     * @return
+     */
+    @Override
+    public Result insertAppoinHotel(AppointmentHotelDto hotelDto) {
+        hotelInfoMapper.insertAppoinHtoel(hotelDto);
+        return Result.success(hotelDto);
     }
 }

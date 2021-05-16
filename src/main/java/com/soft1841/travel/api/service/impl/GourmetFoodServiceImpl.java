@@ -69,7 +69,6 @@ public class GourmetFoodServiceImpl extends ServiceImpl<GourmetFoodMapper, Gourm
         }else {
             return Result.failure(ResultCode.DATABASE_ERROR);
         }
-
     }
 
     /**
