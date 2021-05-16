@@ -6,6 +6,7 @@ import com.soft1841.travel.api.common.Result;
 import com.soft1841.travel.api.domain.dto.AppointmentAttraDto;
 import com.soft1841.travel.api.domain.dto.AppointmentGourmetFoodDto;
 import com.soft1841.travel.api.domain.dto.PageDto;
+import com.soft1841.travel.api.domain.dto.RestCommentsDto;
 import com.soft1841.travel.api.domain.entity.GourmetFood;
 
 /**
@@ -52,4 +53,10 @@ public interface GourmetFoodService extends IService<GourmetFood> {
      */
     Result insertAppoinFood(AppointmentGourmetFoodDto foodDto);
 
+    /**
+     * 点评餐厅
+     * @param commentsDto
+     * @return
+     */
+    Result insertComments(RestCommentsDto commentsDto);
 }

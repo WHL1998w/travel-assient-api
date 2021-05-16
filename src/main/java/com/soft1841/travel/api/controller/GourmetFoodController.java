@@ -5,6 +5,7 @@ import com.soft1841.travel.api.common.Result;
 import com.soft1841.travel.api.domain.dto.AppointmentAttraDto;
 import com.soft1841.travel.api.domain.dto.AppointmentGourmetFoodDto;
 import com.soft1841.travel.api.domain.dto.PageDto;
+import com.soft1841.travel.api.domain.dto.RestCommentsDto;
 import com.soft1841.travel.api.service.GourmetFoodService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -89,4 +90,15 @@ public class GourmetFoodController {
         return this.gourmetFoodService.insertAppoinFood(foodDto);
     }
 
+    /**
+     * 点评餐厅
+     * @param commentsDto
+     * @return
+     */
+    @PostMapping("/comments")
+    @ApiOperation(value = "点评餐厅", notes = "点评餐厅")
+    public Result insertComments(@RequestBody RestCommentsDto commentsDto){
+        log.info((gourmetFoodService.toString()));
+        return this.gourmetFoodService.insertComments(commentsDto);
+    }
 }

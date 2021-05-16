@@ -4,6 +4,7 @@ package com.soft1841.travel.api.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.soft1841.travel.api.domain.dto.AppointmentGourmetFoodDto;
 import com.soft1841.travel.api.domain.dto.AppointmentHotelDto;
+import com.soft1841.travel.api.domain.dto.RestCommentsDto;
 import com.soft1841.travel.api.domain.entity.GourmetFood;
 import com.soft1841.travel.api.domain.entity.HotelInfo;
 import org.apache.ibatis.annotations.Insert;
@@ -34,5 +35,13 @@ public interface GourmetFoodMapper extends BaseMapper<GourmetFood> {
     @Insert("INSERT INTO user_appointment(name,phone,appointment_name,accompany_nums,check_in_time,remarks,type) values (#{name},#{phone},#{appointmentName},#{accompanyNums},#{checkInTime},#{remarks},#{type})")
     @Options(useGeneratedKeys = true,keyProperty = "id")
     void insertAppoinGourmetFood(AppointmentGourmetFoodDto foodDto);
+
+    /**
+     * 点评餐厅接口
+     * @param commentsDto
+     */
+    @Insert("INSERT INTO rest_comments(user_id,restaurant_id,comments,comments_time) values (#{userId},#{restaurantId},#{comments},#{commentsTime})")
+    @Options(useGeneratedKeys = true,keyProperty = "id")
+    void insertComments(RestCommentsDto commentsDto);
 
 }

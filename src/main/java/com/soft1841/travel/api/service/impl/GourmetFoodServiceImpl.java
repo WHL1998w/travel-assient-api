@@ -8,6 +8,7 @@ import com.soft1841.travel.api.common.Result;
 import com.soft1841.travel.api.common.ResultCode;
 import com.soft1841.travel.api.domain.dto.AppointmentGourmetFoodDto;
 import com.soft1841.travel.api.domain.dto.PageDto;
+import com.soft1841.travel.api.domain.dto.RestCommentsDto;
 import com.soft1841.travel.api.domain.entity.*;
 import com.soft1841.travel.api.domain.vo.PoiTicketVo;
 import com.soft1841.travel.api.domain.vo.RestCommentsVo;
@@ -124,5 +125,16 @@ public class GourmetFoodServiceImpl extends ServiceImpl<GourmetFoodMapper, Gourm
     public Result insertAppoinFood(AppointmentGourmetFoodDto foodDto) {
         gourmetFoodMapper.insertAppoinGourmetFood(foodDto);
         return Result.success(foodDto);
+    }
+
+    /**
+     * 点评餐厅
+     * @param commentsDto
+     * @return
+     */
+    @Override
+    public Result insertComments(RestCommentsDto commentsDto) {
+        gourmetFoodMapper.insertComments(commentsDto);
+        return Result.success(commentsDto);
     }
 }
