@@ -3,6 +3,8 @@ package com.soft1841.travel.api.controller;
 
 import com.soft1841.travel.api.common.Result;
 import com.soft1841.travel.api.domain.dto.PageDto;
+import com.soft1841.travel.api.domain.dto.RestCommentsDto;
+import com.soft1841.travel.api.domain.dto.TravelNodeDto;
 import com.soft1841.travel.api.service.TravelNodeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -71,5 +73,17 @@ public class TravelNodeController {
     @ApiOperation(value = "查询热门游记信息", notes = "查询热门游记信息")
     public Result getTopAttrationsList() {
         return travelNodeService.getTopTravelNodeInfo();
+    }
+
+    /**
+     * 发表游记
+     * @param travelNodeDto
+     * @return
+     */
+    @PostMapping("/add")
+    @ApiOperation(value = "发表游记", notes = "发表游记")
+    public Result addTravelNode(@RequestBody TravelNodeDto travelNodeDto){
+        log.info((travelNodeService.toString()));
+        return this.travelNodeService.addTravelNode(travelNodeDto);
     }
 }

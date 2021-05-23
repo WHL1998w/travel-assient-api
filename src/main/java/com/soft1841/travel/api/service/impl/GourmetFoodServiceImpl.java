@@ -46,6 +46,9 @@ public class GourmetFoodServiceImpl extends ServiceImpl<GourmetFoodMapper, Gourm
     @Override
     public Result getGourmentFoodById(Integer id) {
         GourmetFood gourmetFood = gourmetFoodMapper.getGourmetFoodById(id);
+        //每浏览一次浏览次数增加1
+        gourmetFood.setReviewsNum(gourmetFood.getReviewsNum() + 1);
+        gourmetFoodMapper.updateById(gourmetFood);
         if (gourmetFood != null){
             Map<String, Object> map = new TreeMap<>();
             map.put("id",gourmetFood.getId());
@@ -105,13 +108,13 @@ public class GourmetFoodServiceImpl extends ServiceImpl<GourmetFoodMapper, Gourm
     }
 
     /**
-     * 查询热门餐厅，星级为5及以上
+     * 查询热门餐厅，浏览量达到600以上
      * @return
      */
     @Override
     public Result getTopGourmentFood() {
         QueryWrapper<GourmetFood> wrapper = new QueryWrapper<>();
-        wrapper.ge("score",5);
+        wrapper.ge("reviews_num",600);
         List<GourmetFood> gourmetFoodList = gourmetFoodMapper.selectList(wrapper);
         return Result.success(gourmetFoodList);
     }

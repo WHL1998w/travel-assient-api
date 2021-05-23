@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.soft1841.travel.api.common.Result;
 import com.soft1841.travel.api.domain.dto.PageDto;
+import com.soft1841.travel.api.domain.dto.TravelNodeDto;
 import com.soft1841.travel.api.domain.entity.AttractionsInfo;
 import com.soft1841.travel.api.domain.entity.TravelNode;
 import com.soft1841.travel.api.domain.vo.TravelNodeVo;
@@ -38,6 +39,10 @@ public class TravelNodeServiceImpl extends ServiceImpl<TravelNodeMapper, TravelN
     @Override
     public Result getTravelNodeById(Integer id) {
         TravelNodeVo travelNode = travelNodeMapper.getTravelNodeById(id);
+        TravelNode travelNode1 = travelNodeMapper.selectById(id);
+        //每浏览一次浏览次数增加1
+        travelNode1.setNotesView(travelNode1.getNotesView() + 1);
+        travelNodeMapper.updateById(travelNode1);
         return Result.success(travelNode);
     }
 
@@ -73,14 +78,25 @@ public class TravelNodeServiceImpl extends ServiceImpl<TravelNodeMapper, TravelN
     }
 
     /**
-     * 查询热门游记,点赞数超过15个则为热门游记
+     * 查询热门游记,游览量达到30以上则为热门游记
      * @return
      */
     @Override
     public Result getTopTravelNodeInfo() {
         QueryWrapper<TravelNode> wrapper = new QueryWrapper<>();
-        wrapper.ge("notes_like",15);
+        wrapper.ge("notes_view",30);
         List<TravelNode> travelNodes = travelNodeMapper.selectList(wrapper);
         return Result.success(travelNodes);
+    }
+
+    /**
+     * 发表游记
+     * @param travelNodeDto
+     * @return
+     */
+    @Override
+    public Result addTravelNode(TravelNodeDto travelNodeDto) {
+        travelNodeMapper.insertTravelNode(travelNodeDto);
+        return Result.success(travelNodeDto);
     }
 }

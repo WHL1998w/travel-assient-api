@@ -4,6 +4,7 @@ package com.soft1841.travel.api.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.soft1841.travel.api.common.Result;
 import com.soft1841.travel.api.domain.dto.PageDto;
+import com.soft1841.travel.api.domain.dto.TravelNodeDto;
 import com.soft1841.travel.api.domain.entity.TravelNode;
 
 /**
@@ -43,4 +44,10 @@ public interface TravelNodeService extends IService<TravelNode> {
      */
     Result getTopTravelNodeInfo();
 
+    /**
+     * 发表游记
+     * @param travelNodeDto
+     * @return
+     */
+    Result addTravelNode(TravelNodeDto travelNodeDto);
 }
