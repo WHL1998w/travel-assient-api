@@ -105,7 +105,7 @@ public class GourmetFoodServiceImpl extends ServiceImpl<GourmetFoodMapper, Gourm
     }
 
     /**
-     * 查询热门餐厅
+     * 查询热门餐厅，星级为5及以上
      * @return
      */
     @Override

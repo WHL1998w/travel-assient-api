@@ -1,31 +1,29 @@
-package com.soft1841.travel.api.domain.entity;
+package com.soft1841.travel.api.domain.vo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * <p>
- * 
- * </p>
- *
- * @author wanghuanle
- * @since 2021-05-16
- */
+ * @ClassName
+ * @Description TODO
+ * @Author wanghuanle
+ * @Date
+ **/
 @Data
-@EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
-@TableName("travel_node")
-public class TravelNode extends Model<TravelNode> {
+@NoArgsConstructor
+@Builder
+public class TravelNodeVo{
 
     private static final long serialVersionUID = 1L;
 
@@ -83,10 +81,21 @@ public class TravelNode extends Model<TravelNode> {
     @TableField("image")
     private String image;
 
+    private  String user_name;
+    private  String avatar;
 
-    @Override
-    protected Serializable pkVal() {
-        return this.id;
+    public TravelNodeVo(Integer id, String notesTitle, String notesCover, Integer userId, LocalDateTime notesTime, Integer notesView, Integer notesLike, String content, String image, String user_name, String avatar) {
+        this.id = id;
+        this.notesTitle = notesTitle;
+        this.notesCover = notesCover;
+        this.userId = userId;
+        this.notesTime = notesTime;
+        this.notesView = notesView;
+        this.notesLike = notesLike;
+        this.content = content;
+        this.image = image;
+        this.user_name = user_name;
+        this.avatar = avatar;
     }
-
 }
+
