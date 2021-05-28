@@ -29,9 +29,11 @@ public class AppointmentGourmetFoodDto {
     //随行人数
     private Integer accompanyNums;
     //到店时间时间
-    private Date checkInTime;
+    private String checkInTime;
     //备注
     private String remarks;
     //预约类型
     private Integer type;
+    //用户id
+    private Integer userId;
 }

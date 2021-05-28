@@ -40,7 +40,7 @@ public interface GourmetFoodMapper extends BaseMapper<GourmetFood> {
      * 点评餐厅接口
      * @param commentsDto
      */
-    @Insert("INSERT INTO rest_comments(user_id,restaurant_id,comments,comments_time) values (#{userId},#{restaurantId},#{comments},#{commentsTime})")
+    @Insert("INSERT INTO rest_comments(user_id,restaurant_id,comments,comments_time,user_id) values (#{userId},#{restaurantId},#{comments},#{commentsTime},#{userId})")
     @Options(useGeneratedKeys = true,keyProperty = "id")
     void insertComments(RestCommentsDto commentsDto);
 

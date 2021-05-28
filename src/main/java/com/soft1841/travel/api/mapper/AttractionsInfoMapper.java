@@ -31,7 +31,7 @@ public interface AttractionsInfoMapper extends BaseMapper<AttractionsInfo> {
      * 预约景点接口
      * @param appointmentAttraDto
      */
-    @Insert("INSERT INTO user_appointment(name,phone,appointment_name,accompany_nums,check_in_time,remarks,type) values (#{name},#{phone},#{appointmentName},#{accompanyNums},#{checkInTime},#{remarks},#{type})")
+    @Insert("INSERT INTO user_appointment(name,phone,appointment_name,accompany_nums,check_in_time,remarks,type,user_id) values (#{name},#{phone},#{appointmentName},#{accompanyNums},#{checkInTime},#{remarks},#{type},#{userId})")
     @Options(useGeneratedKeys = true,keyProperty = "id")
     void insertAppoinAttrations(AppointmentAttraDto appointmentAttraDto);
 }

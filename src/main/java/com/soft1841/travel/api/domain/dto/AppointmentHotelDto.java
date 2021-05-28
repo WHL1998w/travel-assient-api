@@ -31,11 +31,13 @@ public class AppointmentHotelDto {
     //随行人数
     private Integer accompanyNums;
     //入住时间
-    private Date checkInTime;
+    private String checkInTime;
     //离店时间
-    private Date leaveTime;
+    private String leaveTime;
     //备注
     private String remarks;
     //预约类型
     private Integer type;
+    //用户id
+    private Integer userId;
 }

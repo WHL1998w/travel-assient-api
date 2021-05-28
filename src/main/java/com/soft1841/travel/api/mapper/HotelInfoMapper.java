@@ -31,7 +31,7 @@ public interface HotelInfoMapper extends BaseMapper<HotelInfo> {
      * 预约酒店接口
      * @param hotelDto
      */
-    @Insert("INSERT INTO user_appointment(name,phone,appointment_name,room_type,accompany_nums,check_in_time,leave_time,remarks,type) values (#{name},#{phone},#{appointmentName},#{roomType},#{accompanyNums},#{checkInTime},#{leaveTime},#{remarks},#{type})")
+    @Insert("INSERT INTO user_appointment(name,phone,appointment_name,room_type,accompany_nums,check_in_time,leave_time,remarks,type,user_id) values (#{name},#{phone},#{appointmentName},#{roomType},#{accompanyNums},#{checkInTime},#{leaveTime},#{remarks},#{type},#{userId})")
     @Options(useGeneratedKeys = true,keyProperty = "id")
     void insertAppoinHtoel(AppointmentHotelDto hotelDto);
 

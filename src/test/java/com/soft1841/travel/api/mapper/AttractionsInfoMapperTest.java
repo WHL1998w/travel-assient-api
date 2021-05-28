@@ -44,7 +44,7 @@ class AttractionsInfoMapperTest {
         appointmentAttraDto.setPhone("18805162578");
         appointmentAttraDto.setAppointmentName("总统府");
         appointmentAttraDto.setAccompanyNums(2);
-        appointmentAttraDto.setCheckInTime(new Date());
+        appointmentAttraDto.setCheckInTime("2021-05-06 12:30:00");
         attractionsInfoMapper.insertAppoinAttrations(appointmentAttraDto);
     }
 }
