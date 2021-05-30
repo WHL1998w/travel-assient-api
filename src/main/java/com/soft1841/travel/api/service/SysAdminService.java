@@ -1,5 +1,6 @@
 package com.soft1841.travel.api.service;
 
+import com.soft1841.travel.api.common.Result;
 import com.soft1841.travel.api.domain.dto.AdminDto;
 import com.soft1841.travel.api.domain.dto.LoginDto;
 import com.soft1841.travel.api.domain.entity.SysAdmin;
@@ -18,12 +19,19 @@ import java.util.Map;
  */
 public interface SysAdminService extends IService<SysAdmin> {
     /**
-     * 登录
+     * 后台管理系统登录接口
      *
      * @param loginDto
      * @return boolean
      */
     Map<String,Object> login(LoginDto loginDto);
+
+    /**
+     * 微信小程序端登录接口
+     * @param loginWechatDto
+     * @return
+     */
+    Map<String,Object> loginWechat(LoginDto loginWechatDto);
 
     /**
      * 根据name查询Admin信息，包含其所有角色
@@ -45,29 +53,23 @@ public interface SysAdminService extends IService<SysAdmin> {
 
     /**
      * 修改用户信息
-     * @param sysAdmin
+     * @param adminDto
      * @return
      */
-    SysAdmin updateSysAdmin (SysAdmin sysAdmin);
+    Result updateSysAdmin (AdminDto adminDto);
 
-    /**
-     * 根据id获取admin
-     * @param id
-     * @return SysAdminDto
-     */
-    SysAdmin getSysAdminById(String id);
 
     /**
      * 新增管理员admin
      * @param adminDto
      * @return
      */
-    AdminDto insertAdmin(AdminDto adminDto);
+    Result insertAdmin(AdminDto adminDto);
 
     /**
      * 删除管理员
-     * @param adminDto
+     * @param sysAdmin
      * @return
      */
-    AdminDto deleteAdmin(AdminDto adminDto);
+    Result deleteAdmin(SysAdmin sysAdmin);
 }

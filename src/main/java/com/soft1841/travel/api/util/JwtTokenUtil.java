@@ -46,6 +46,21 @@ public class JwtTokenUtil {
         return token;
     }
 
+    public static String getToken1(final String adminId, final String secrect, Date expiresAt) {
+        String token = null;
+        try {
+            token = JWT.create()
+                    .withIssuer("auth0")
+                    .withClaim("adminId", adminId)
+                    .withExpiresAt(expiresAt)
+                    // 使用了HMAC256加密算法, secrect是用来加密数字签名的密钥
+                    .sign(Algorithm.HMAC256(secrect));
+        } catch (UnsupportedEncodingException e) {
+            log.error("不支持的编码格式");
+        }
+        return token;
+    }
+
     /**
      * 解密
      *

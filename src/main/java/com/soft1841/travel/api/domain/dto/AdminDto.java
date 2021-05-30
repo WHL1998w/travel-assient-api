@@ -18,9 +18,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AdminDto {
-    private String id;
     private String account;
     private String password;
     private String avatar;
-    private String salt;
 }

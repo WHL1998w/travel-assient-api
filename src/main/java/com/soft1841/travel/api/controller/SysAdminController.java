@@ -1,6 +1,7 @@
 package com.soft1841.travel.api.controller;
 
 
+import com.soft1841.travel.api.common.Result;
 import com.soft1841.travel.api.domain.dto.AdminDto;
 import com.soft1841.travel.api.domain.dto.LoginDto;
 import com.soft1841.travel.api.domain.entity.RoleMenu;
@@ -47,34 +48,24 @@ public class SysAdminController {
         return sysAdminService.login(loginDto);
     }
 
-    /**
-     * 根据id查询管理员信息
-     */
-    @GetMapping("/{id}")
-    @ApiOperation(value = "根据管理员id查询信息", notes = "根据管理员id查询信息")
-    //@PathVariable路径传参的注解
-    public SysAdmin getSysAdmin(@PathVariable String id) {
-        log.info(sysAdminService.getSysAdminById(id).toString());
-        return sysAdminService.getSysAdminById(id);
-    }
 
     @PutMapping("/update")
     @ApiOperation(value = "修改管理员信息", notes = "修改管理员信息")
-    SysAdmin updateSysAdmin(@RequestBody SysAdmin sysAdmin){
+    Result updateSysAdmin(@RequestBody AdminDto sysAdmin){
         return sysAdminService.updateSysAdmin(sysAdmin);
     }
 
     @PostMapping("/insert")
     @ApiOperation(value = "新增管理员", notes = "新增管理员")
-    public AdminDto insertAdmin(@RequestBody AdminDto adminDto){
+    public Result insertAdmin(@RequestBody AdminDto adminDto){
         log.info((adminDto.toString()));
         return this.sysAdminService.insertAdmin(adminDto);
     }
 
     @PostMapping("/delete")
     @ApiOperation(value = "删除管理员", notes = "删除管理员")
-    public AdminDto deleteAdmin(@RequestBody AdminDto AdminDto){
-        log.info((AdminDto.toString()));
-        return this.sysAdminService.deleteAdmin(AdminDto);
+    public Result deleteAdmin(@RequestBody SysAdmin sysAdmin){
+        log.info((sysAdmin.toString()));
+        return this.sysAdminService.deleteAdmin(sysAdmin);
     }
 }

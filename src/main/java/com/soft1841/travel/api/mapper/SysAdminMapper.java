@@ -1,11 +1,9 @@
 package com.soft1841.travel.api.mapper;
 
+import com.soft1841.travel.api.domain.dto.AdminDto;
 import com.soft1841.travel.api.domain.entity.SysAdmin;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.time.LocalDateTime;
 
@@ -45,20 +43,20 @@ public interface SysAdminMapper extends BaseMapper<SysAdmin> {
     SysAdmin getSysAdminById(@Param("id") String id);
 
     /**
-     * 新增管理员admin
+     * 新增管理员
+     * @param id
      * @param account
      * @param password
+     * @param avatar
      * @param salt
      */
     @Insert("INSERT INTO sys_admin(id,account,password,avatar,salt) values (#{id},#{account},#{password},#{avatar},#{salt})")
-    void insertAdmin(@Param("id") String id, @Param("account") String account,
-                     @Param("password") String password,@Param("avatar")String avatar,
-                     @Param("salt") String salt);
+    void insertAdmin(@Param("id") String id,@Param("account") String account,@Param("password") String password,@Param("avatar") String avatar,@Param("salt") String salt);
 
     /**
      * 删除管理员
-     * @param id
+     * @param account
      */
-    @Delete("DELETE FROM sys_admin WHERE id = #{id}")
-    void deleteAdmin(@Param("id") String id);
+    @Delete("DELETE FROM sys_admin WHERE account = #{account}")
+    void deleteAdmin(@Param("account") String account);
 }
